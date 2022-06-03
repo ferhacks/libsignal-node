@@ -104,8 +104,10 @@ class SessionCipher {
             result[0] = this._encodeTupleByte(VERSION, VERSION);
             result.set(msgBuf, 1);
             result.set(mac.slice(0, 8), msgBuf.byteLength + 1);
+            
             record.updateSessionState(session);
             await this.storeRecord(record);
+            
             let type, body;
             if (session.pendingPreKey) {
                 type = 3;  // prekey bundle
@@ -154,7 +156,9 @@ class SessionCipher {
                     plaintext
                 };
             } catch(e) {
-                if (e.name == "MessageCounterError") break;
+                if (e.name == "MessageCounterError") {
+                    break;
+                }
                 errs.push(e);
             }
         }

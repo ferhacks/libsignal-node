@@ -65,7 +65,7 @@ class SessionBuilder {
         const existingOpenSession = record.getOpenSession();
         if (!signedPreKeyPair) { 
             if (existingOpenSession && existingOpenSession.currentRatchet) return;
-            throw new errors.PreKeyError("Missing SignedPreKey");
+            else throw new errors.PreKeyError("Missing SignedPreKey");
         }   
         if (existingOpenSession) {
             record.archiveCurrentState();
@@ -75,8 +75,9 @@ class SessionBuilder {
                                                  undefined, message.registrationId);
         if (existingOpenSession && session && !Util.isEqual(existingOpenSession.indexInfo.remoteIdentityKey, session.indexInfo.remoteIdentityKey)) {
             record.deleteAllSessions();
-            record.updateSessionState(session);
         }
+        record.updateSessionState(session);
+        
         return message.preKeyId;
     }
 
