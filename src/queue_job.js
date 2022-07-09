@@ -49,7 +49,7 @@ module.exports = function(bucket, awaitable) {
         if (typeof bucket === 'string') {
             awaitable.name = bucket;
         } else {
-            loggerChild.warn({ bucketTypeof: typeof bucket, bucket }, "Unhandled bucket type (for naming):");
+//            loggerChild.warn({ bucketTypeof: typeof bucket, bucket }, "Unhandled bucket type (for naming):");
         }
     }
     let inactive;
