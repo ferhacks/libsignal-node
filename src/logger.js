@@ -1,6 +1,6 @@
 const loggerPino = require('pino');
 
-const _logger = loggerPino({ level: 'silent' });
+const _logger = loggerPino({ enabled : false });
 
 function getLogger(){
     return _logger;
