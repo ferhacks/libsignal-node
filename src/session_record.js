@@ -270,18 +270,18 @@ class SessionRecord {
 
     closeSession(session) {
         if (this.isClosed(session)) {
-            loggerChild.warn({ session }, "Session already closed");
+//            loggerChild.warn({ session }, "Session already closed");
             return;
         }
-        loggerChild.info({session}, "Closing session");
+  //      loggerChild.info({session}, "Closing session");
         session.indexInfo.closed = Date.now();
     }
 
     openSession(session) {
         if (!this.isClosed(session)) {
-            loggerChild.warn("Session already open");
+    //        loggerChild.warn("Session already open");
         }
-        loggerChild.info({session}, "Opening session");
+      //  loggerChild.info({session}, "Opening session");
         session.indexInfo.closed = -1;
     }
 
@@ -301,7 +301,7 @@ class SessionRecord {
                 }
             }
             if (oldestKey) {
-                loggerChild.info({ oldestSession }, "Removing old closed session");
+               // loggerChild.info({ oldestSession }, "Removing old closed session");
                 delete this.sessions[oldestKey];
             } else {
                 throw new Error('Corrupt sessions object');
